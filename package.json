@@ -2,7 +2,7 @@
   "name": "mercado-livre-clone-api",
   "version": "1.0.0",
   "description": "Mercado Livre short app clone API",
-  "main": "bin/index.js",
+  "main": "bin/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
     "url": "git+https://github.com/fernandohenriques/mercado-livre-clone-api.git"
   },
   "author": "Fernando Henriques",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-plugin-node": "^10.0.0"
+  }
 }

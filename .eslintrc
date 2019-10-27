@@ -1,0 +1,26 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "rules": {
+    "no-console": 0,
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "eqeqeq": ["error", "always"],
+    "max-len": ["error", { "code": 200 }],
+    "object-curly-spacing": ["error", "always"],
+    "comma-dangle": ["error", "always-multiline"],
+    "node/exports-style": ["error", "module.exports"],
+    "node/prefer-global/buffer": ["error", "always"],
+    "node/prefer-global/console": ["error", "always"],
+    "node/prefer-global/process": ["error", "always"],
+    "node/prefer-global/url-search-params": ["error", "always"],
+    "node/prefer-global/url": ["error", "always"]
+  }
+}
