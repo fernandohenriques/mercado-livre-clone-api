@@ -1,4 +1,4 @@
-# Mercado Livre App Api (BFF for [this](https://github.com/fernandohenriques/mercado-livre-clone-api.git) front-end)
+# Mercado Livre App Api (BFF for [this](https://github.com/fernandohenriques/mercado-livre-clone.git) front-end)
 
 ## Getting Started
 
