@@ -10,7 +10,8 @@ const getProducts = async (query) => {
     const categoriesFilters = R.find(R.propEq('id', 'category'))(filters) || [];
 
     const categories = [];
-    categoriesFilters.values.forEach(value => value.path_from_root.map(path => categories.push(path.name)));
+    categoriesFilters.values
+    && categoriesFilters.values.forEach(value => value.path_from_root.map(path => categories.push(path.name)));
 
     const items = [];
     result.results.forEach(item => {
