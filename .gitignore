@@ -3,5 +3,6 @@ node_modules/**/*
 .vscode/settings.json
 
 .env
+yarn.lock
 
 *.txt
