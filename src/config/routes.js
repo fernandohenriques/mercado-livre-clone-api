@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 /* Controllers */
-//const productController = require('../controllers/product-controller');
+const productController = require('../controllers/product-controller');
 
 /* Routes */
 router.get('/', (req, res) => {
@@ -11,5 +11,9 @@ router.get('/', (req, res) => {
     version: '0.0.1',
   });
 });
+
+router.get('/items', productController.search);
+
+router.get('*', (req, res) => res.status(404).send());
 
 module.exports = router;
