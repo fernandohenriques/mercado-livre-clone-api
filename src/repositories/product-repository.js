@@ -11,7 +11,8 @@ const getProducts = async (query) => {
 
     const categories = [];
     categoriesFilters.values
-    && categoriesFilters.values.forEach(value => value.path_from_root.map(path => categories.push(path.name)));
+      && Array.isArray(categoriesFilters.values)
+      && categoriesFilters.values.forEach(value => value.path_from_root.map(path => categories.push(path.name)));
 
     const items = [];
     result.results.forEach(item => {
