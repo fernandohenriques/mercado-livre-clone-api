@@ -1,7 +1,8 @@
 {
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
+    "mocha": true
   },
   "parserOptions": {
     "ecmaVersion": 2018
@@ -22,5 +23,12 @@
     "node/prefer-global/process": ["error", "always"],
     "node/prefer-global/url-search-params": ["error", "always"],
     "node/prefer-global/url": ["error", "always"]
-  }
+  },
+  "overrides": [{
+    "files": "test/**/*.js",
+    "rules": {
+      "node/no-unpublished-require": 0,
+      "node/no-missing-require": 0
+    }
+  }]
 }
