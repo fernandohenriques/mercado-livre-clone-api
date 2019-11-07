@@ -38,11 +38,25 @@ $ npm install
 $ npm run start
 ```
 
+### Run tests
+
+```
+$ cd mercado-livre-clone-api/
+$ npm run test:unit
+```
+
 ### Static Analysis
 
 ```
 $ cd mercado-livre-clone-api/
 $ npm run test:lint
+```
+
+### Code Coverage
+
+```
+$ cd mercado-livre-clone-api/
+$ npm run test:coverage
 ```
 
 ## Built With

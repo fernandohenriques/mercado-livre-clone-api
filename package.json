@@ -7,7 +7,8 @@
     "start": "node ./bin/server.js",
     "dev": "nodemon ./bin/server.js",
     "test:lint": "eslint . --fix",
-    "test:unit": "mocha test/unit/**/*.js --colors --exit"
+    "test:unit": "mocha test/unit/**/*.js --colors --exit",
+    "test:coverage": "nyc --reporter=html --reporter=text npm run test:unit --colors"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -37,7 +38,8 @@
     "eslint": "5.16.0",
     "eslint-plugin-node": "^10.0.0",
     "faker": "^4.1.0",
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
   },
   "engines": {
     "node": ">=10.11.0"
