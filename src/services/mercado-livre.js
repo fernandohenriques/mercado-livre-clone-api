@@ -1,20 +1,26 @@
-const { setup } = require('axios-cache-adapter');
-
-const MeliSearcApi = setup({
-  baseURL: `${process.env.MLA_SEARCH_URL}`,
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  },
-  cache: {
-    maxAge: 30 * 60 * 1000,
-  },
-});
+const{ MeliSearchApi, MeliItemApi } = require('../config/apis');
 
 const MLService = {
   searchItems: async (q) => {
     try {
-      const result = await MeliSearcApi.get(`?q=${q}&limit=10`);
+      const result = await MeliSearchApi.get(`?q=${q}&limit=10`);
+      return result && result.data || null;
+    } catch(e) {
+      return null;
+    }
+  },
+
+  getItem: async (id) => {
+    try {
+      const [item, itemDescription] = await Promise.all([
+        MeliItemApi.get(`/${id}`),
+        MeliItemApi.get(`/${id}/description`)
+      ]);
+
+      console.log(item);
+
+      console.log(itemDescription);
+
       return result && result.data || null;
     } catch(e) {
       return null;

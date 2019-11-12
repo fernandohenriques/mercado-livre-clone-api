@@ -1,6 +1,6 @@
 const R = require('ramda');
 const product = require('../models/Product');
-const { searchItems } = require('../services/mercado-livre');
+const { searchItems, getItem } = require('../services/mercado-livre');
 
 const getProducts = async (query) => {
   const result = await searchItems(query);
@@ -44,6 +44,11 @@ const getProducts = async (query) => {
   return null;
 };
 
+const getProduct = async (id) => {
+  return null;
+};
+
 module.exports = {
+  getProduct,
   getProducts,
 };

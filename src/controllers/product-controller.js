@@ -1,4 +1,4 @@
-const { getProducts } = require('../repositories/product-repository');
+const { getProducts, getProduct } = require('../repositories/product-repository');
 
 const productActions = {
   search: async (req, res) => {
@@ -6,6 +6,17 @@ const productActions = {
 
     if (query) {
       const result = await getProducts(query);
+      res.status(200).send({ ...result });
+    } else {
+      res.status(422).send();
+    }
+  },
+
+  items: async (req, res) => {
+    const id = req.params.id;
+
+    if (id) {
+      const result = await getProduct(query);
       res.status(200).send({ ...result });
     } else {
       res.status(422).send();
