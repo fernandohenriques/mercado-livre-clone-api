@@ -14,7 +14,7 @@ const MLService = {
     try {
       const [item, itemDescription] = await Promise.all([
         MeliItemApi.get(`/${id}`),
-        MeliItemApi.get(`/${id}/description`)
+        MeliItemApi.get(`/${id}/description`),
       ]);
 
       console.log(item);
