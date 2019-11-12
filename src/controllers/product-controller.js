@@ -16,7 +16,7 @@ const productActions = {
     const id = req.params.id;
 
     if (id) {
-      const result = await getProduct(query);
+      const result = await getProduct(id);
       res.status(200).send({ ...result });
     } else {
       res.status(422).send();

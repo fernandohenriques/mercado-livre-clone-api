@@ -45,6 +45,33 @@ const getProducts = async (query) => {
 };
 
 const getProduct = async (id) => {
+  const item = await getItem(id);
+
+  const getCoverImage = (item) => {
+    if (item.pictures && item.pictures.length > 0) return item.pictures[0].url;
+    return item.thumbnail;
+  };
+
+  if (item) {
+    console.log(item);
+    console.log(item.shipping);
+    const { error, value } = product.validate({
+      id: item.id,
+      title: item.title,
+      description: item.plain_text,
+      price: {
+        currency: item.currency_id,
+        amount: item.price,
+      },
+      picture: getCoverImage(item),
+      condition: item.condition,
+      free_shipping: item.shipping.free_shipping,
+      sold_quantity: item.sold_quantity,
+    });
+
+    if (!error) return value;
+  }
+
   return null;
 };
 
