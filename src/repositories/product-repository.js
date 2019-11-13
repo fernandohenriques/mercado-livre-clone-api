@@ -53,8 +53,10 @@ const getProduct = async (id) => {
   };
 
   if (item) {
+    console.log('*********************************************');
     console.log(item);
     console.log(item.shipping);
+    console.log('*********************************************');
     const { error, value } = product.validate({
       id: item.id,
       title: item.title,

@@ -17,7 +17,7 @@ const MLService = {
         MeliItemApi.get(`/${id}/description`),
       ]);
 
-      return item && item.data && itemDescription && { ...item.data, ...itemDescription } || null;
+      return item && item.data && itemDescription && itemDescription.data && { ...item.data, ...itemDescription.data } || null;
     } catch(e) {
       return null;
     }
