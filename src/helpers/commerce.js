@@ -6,7 +6,7 @@ const getPriceAmount = (price) => {
 
 const getPriceDecimals = (price) => {
   const priceAsString = price.toString();
-  const decimals = priceAsString.indexOf('.') !== -1 ? priceAsString.split('.').pop() : undefined;
+  const decimals = priceAsString.indexOf('.') !== -1 ? priceAsString.split('.').pop() : 0;
   return Number(decimals);
 };
 
