@@ -1,6 +1,12 @@
 const R = require('ramda');
 const product = require('../models/Product');
 const { searchItems, getItem } = require('../services/mercado-livre');
+const { getPriceAmount, getPriceDecimals } = require('../helpers/commerce');
+
+const getCoverImage = (item) => {
+  if (item.pictures && item.pictures.length > 0) return item.pictures[0].url;
+  return item.thumbnail;
+};
 
 const getProducts = async (query) => {
   const result = await searchItems(query);
@@ -15,15 +21,18 @@ const getProducts = async (query) => {
       && categoriesFilters.values.forEach(value => value.path_from_root.map(path => categories.push(path.name)));
 
     const items = [];
-    result.results.forEach(item => {
+    const promiseItems = result.results.map(async item => {
+      const detailItem = await getItem(item.id);
+
       const { error, value } = product.validate({
         id: item.id,
         title: item.title,
         price: {
           currency: item.currency_id,
-          amount: item.price,
+          amount: getPriceAmount(item.price),
+          decimals: getPriceDecimals(item.price),
         },
-        picture: item.thumbnail,
+        picture: getCoverImage(detailItem),
         condition: item.condition,
         free_shipping: item.shipping.free_shipping,
         address: {
@@ -34,6 +43,8 @@ const getProducts = async (query) => {
 
       if (!error) items.push(value);
     });
+
+    await Promise.all(promiseItems);
 
     return {
       categories,
@@ -47,11 +58,6 @@ const getProducts = async (query) => {
 const getProduct = async (id) => {
   const item = await getItem(id);
 
-  const getCoverImage = (item) => {
-    if (item.pictures && item.pictures.length > 0) return item.pictures[0].url;
-    return item.thumbnail;
-  };
-
   if (item) {
     const { error, value } = product.validate({
       id: item.id,
@@ -59,7 +65,8 @@ const getProduct = async (id) => {
       description: item.plain_text,
       price: {
         currency: item.currency_id,
-        amount: item.price,
+        amount: getPriceAmount(item.price),
+        decimals: getPriceDecimals(item.price),
       },
       picture: getCoverImage(item),
       condition: item.condition,
