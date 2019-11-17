@@ -9,7 +9,7 @@
   },
   "extends": ["eslint:recommended", "plugin:node/recommended"],
   "rules": {
-    "no-console": 0,
+    "no-console": 1,
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
