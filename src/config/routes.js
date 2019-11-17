@@ -14,6 +14,8 @@ router.get('/', (req, res) => {
 
 router.get('/items', productController.search);
 
+router.get('/items/:id', productController.items);
+
 router.get('*', (req, res) => res.status(404).send());
 
 module.exports = router;
