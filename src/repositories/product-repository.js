@@ -11,8 +11,6 @@ const getCoverImage = (item) => {
 const getProducts = async (query) => {
   const result = await searchItems(query);
 
-  console.log(result);
-
   if (result) {
     const filters = result.filters;
     const categoriesFilters = R.find(R.propEq('id', 'category'))(filters) || [];
@@ -42,8 +40,6 @@ const getProducts = async (query) => {
           state_name: item.address.state_name,
         },
       });
-
-      console.log(error);
 
       if (!error) items.push(value);
     });
