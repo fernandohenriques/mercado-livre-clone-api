@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-JavaScript + Node.js + Express + Ramda + Next.js + ESLint = :muscle:
+JavaScript + Node.js + Express + Joi + Ramda + Husky + ESLint = :muscle:
 
 ### Pré-requisitos
 
