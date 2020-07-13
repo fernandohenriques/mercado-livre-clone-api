@@ -4,7 +4,7 @@ module.exports = {
     'bin/**/*.js',
     'src/**/*.js',
   ],
-  excluse: [
+  exclude: [
     '**/test/**',
   ],
 };
